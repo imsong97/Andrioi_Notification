@@ -19,13 +19,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void onClick(View v){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.ic_baseline_notifications_active_24) // 필수
                 .setContentTitle("Title")
                 .setContentText("ContentContentContentContentContentContentContentContentContentContentContentContentContentContentContent")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -39,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             notificationManager.createNotificationChannel(new NotificationChannel("default", "채널 이름", NotificationManager.IMPORTANCE_DEFAULT));
-        }
 
         notificationManager.notify(1, builder.build());
 
